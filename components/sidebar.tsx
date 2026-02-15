@@ -126,7 +126,7 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
       <div className="px-2 py-3">
         {!collapsed && (
           <p className="mb-2 px-3 text-[10px] text-muted-foreground font-mono">
-            # built with Next.js
+            # built with Claude Opus 4.6
           </p>
         )}
         <Button

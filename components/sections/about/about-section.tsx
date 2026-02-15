@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar } from "@/components/ui/avatar"
 import {
   Card,
   CardContent,
@@ -9,21 +9,44 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Code2, MapPin, Briefcase, GraduationCap } from "lucide-react"
+import Image from "next/image"
+import type { ExperienceType } from "./about"
+import { experiences } from "./about"
 
 const skills = [
   "Python",
   "TypeScript",
-  "React",
   "Next.js",
   "Node.js",
-  "Tailwind CSS",
-  "PostgreSQL",
   "Docker",
   "Git",
   "REST API",
-  "GraphQL",
+  "FastAPI",
+  "TensorFlow",
   "Linux",
 ]
+
+function ExperienceItem({
+  title,
+  company,
+  duration,
+  description,
+  key,
+}: ExperienceType) {
+  return (
+    <div key={key}>
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+        <span className="font-mono text-xs text-muted-foreground">
+          {duration}
+        </span>
+      </div>
+      <p className="text-xs text-primary">{company}</p>
+      <p className="mt-1 text-xs text-muted-foreground">{description}</p>
+      <Separator className="bg-border/50 mt-2" />
+    </div>
+  )
+}
 
 export function AboutSection() {
   return (
@@ -33,21 +56,26 @@ export function AboutSection() {
         <CardContent className="pt-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row">
             <Avatar className="h-20 w-20 border-2 border-primary">
-              <AvatarFallback className="bg-primary text-2xl font-bold text-primary-foreground">
-                DC
-              </AvatarFallback>
+              <Image
+                src="https://cdn.discordapp.com/avatars/732842920889286687/7a3da245a49f565d5d252935f0eec388.webp"
+                alt="dotcchix-avatar"
+                width={128}
+                height={128}
+              />
             </Avatar>
             <div className="text-center sm:text-left">
-              <h1 className="text-2xl font-bold text-foreground">dotcchix</h1>
+              <h1 className="text-2xl font-bold text-foreground">
+                dotcchix | Zex
+              </h1>
               <p className="font-mono text-sm text-secondary">
-                &gt; full_stack_developer
+                &gt; ML_Enthusiast
+              </p>
+              <p className="font-mono text-sm text-secondary">
+                &gt; Back_End_Developer
               </p>
               <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1">
                   <MapPin className="h-3 w-3" /> Indonesia
-                </span>
-                <span className="flex items-center gap-1">
-                  <Briefcase className="h-3 w-3" /> Open to work
                 </span>
               </div>
             </div>
@@ -64,15 +92,27 @@ export function AboutSection() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
+          <p>Hello, I&apos;m Nizar. my IRL friends often call me Zar.</p>
           <p>
-            Hello! I&apos;m a passionate developer who loves building modern web
-            applications. I specialize in full-stack development with a focus on
-            creating clean, efficient, and scalable solutions.
+            If you know me from the internet, you probably know me as{" "}
+            <span className="text-primary">Zex.</span> ||{" "}
+            <span className="text-secondary">dotcchix</span>.
           </p>
           <p>
-            When I&apos;m not coding, you can find me exploring new
-            technologies, contributing to open-source projects, and continuously
-            learning to stay up-to-date with the ever-evolving tech landscape.
+            I&apos;m a final-year Informatics student with interest in backend
+            development, especially using Python and TypeScript. I&apos;ve
+            worked on several projects including Python-based Discord bots and
+            small backend services.
+          </p>
+          <p>
+            Right now, I&apos;m focused on improving my skills in machine
+            learning specially building my own chatbot using open source models
+            and frameworks.
+          </p>
+          <p>
+            A little note here, i'm not into frontend development, so this
+            portfolio is intentionally simple and minimalistic, vibe coded with
+            Claude Opus 4.6.
           </p>
         </CardContent>
       </Card>
@@ -112,37 +152,7 @@ export function AboutSection() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-foreground">
-                Full Stack Developer
-              </h3>
-              <span className="font-mono text-xs text-muted-foreground">
-                2024 — present
-              </span>
-            </div>
-            <p className="text-xs text-primary">Freelance</p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Building web applications for clients using modern technologies
-              like React, Next.js, and Python.
-            </p>
-          </div>
-          <Separator className="bg-border/50" />
-          <div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-foreground">
-                Junior Developer
-              </h3>
-              <span className="font-mono text-xs text-muted-foreground">
-                2023 — 2024
-              </span>
-            </div>
-            <p className="text-xs text-primary">Tech Startup</p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Developed and maintained frontend features, collaborated with
-              design teams, and improved codebase quality.
-            </p>
-          </div>
+          {experiences.map((v, idx) => ExperienceItem({ ...v, key: idx }))}
         </CardContent>
       </Card>
     </div>

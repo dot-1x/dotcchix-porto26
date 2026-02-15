@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Sidebar, type SectionId } from "@/components/sidebar"
-import { AboutSection } from "@/components/sections/about-section"
+import { AboutSection } from "@/components/sections/about/about-section"
 import { HobbiesSection } from "@/components/sections/hobbies-section"
 import { ProjectsSection } from "@/components/sections/projects-section"
 import { ContactSection } from "@/components/sections/contact-section"
@@ -57,8 +57,9 @@ export default function Home() {
             {/* Footer */}
             <div className="mt-12 border-t border-border/30 pt-4">
               <p className="text-center font-mono text-[10px] text-muted-foreground">
-                &copy; 2026 dotcchix &mdash; built with Next.js + shadcn/ui |{" "}
-                <span className="text-primary">Python</span> themed
+                &copy; 2026 dotcchix &mdash; Vibe Coded with Claude Opus 4.6 |{" "}
+                <span className="text-primary">Py</span>
+                <span className="text-secondary">thon</span> themed
               </p>
             </div>
           </div>
