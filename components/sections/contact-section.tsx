@@ -24,25 +24,25 @@ const socialLinks = [
     icon: Github,
     label: "GitHub",
     handle: "@dotcchix",
-    url: "https://github.com",
+    url: "https://github.com/dot-1x",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     handle: "in/dotcchix",
-    url: "https://linkedin.com",
+    url: "https://www.linkedin.com/in/nizar-dhiaudin-b0aa792ab/",
   },
   {
     icon: Twitter,
     label: "Twitter / X",
     handle: "@dotcchix",
-    url: "https://twitter.com",
+    url: "https://twitter.com/zexdii",
   },
   {
     icon: Mail,
     label: "Email",
-    handle: "hello@dotcchix.dev",
-    url: "mailto:hello@dotcchix.dev",
+    handle: "zex@dotcchix.dev",
+    url: "mailto:zex@dotcchix.dev",
   },
 ]
 

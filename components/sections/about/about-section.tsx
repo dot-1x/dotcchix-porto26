@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import { Code2, MapPin, Briefcase, GraduationCap } from "lucide-react"
 import Image from "next/image"
 import type { ExperienceType } from "./about"
-import { experiences } from "./about"
+import { experiences, educations } from "./about"
 
 const skills = [
   "Python",
@@ -153,6 +153,19 @@ export function AboutSection() {
         </CardHeader>
         <CardContent className="space-y-4">
           {experiences.map((v, idx) => ExperienceItem({ ...v, key: idx }))}
+        </CardContent>
+      </Card>
+
+      {/* Education */}
+      <Card className="border-border/50 bg-card backdrop-blur-sm">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 font-mono text-base text-secondary">
+            <GraduationCap className="h-4 w-4" />
+            education.edu
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {educations.map((v, idx) => ExperienceItem({ ...v, key: idx }))}
         </CardContent>
       </Card>
     </div>
