@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Sidebar, type SectionId } from "@/components/sidebar"
 import { AboutSection } from "@/components/sections/about/about-section"
-import { HobbiesSection } from "@/components/sections/hobbies-section"
+import { HobbiesSection } from "@/components/sections/hobbies/hobbies-section"
 import { ProjectsSection } from "@/components/sections/projects-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { ScrollArea } from "@/components/ui/scroll-area"

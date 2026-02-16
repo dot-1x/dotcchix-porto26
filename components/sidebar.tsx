@@ -37,7 +37,7 @@ const sections: {
 ]
 
 export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(true)
 
   return (
     <aside
