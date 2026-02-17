@@ -12,54 +12,58 @@ import { FolderGit2, ExternalLink, Github, Star } from "lucide-react"
 
 const projects = [
   {
-    title: "portfolio-v2",
+    title: "SIAKAD PPMAC",
     description:
-      "A modern developer portfolio built with Next.js and Tailwind CSS. Features a file-explorer inspired sidebar navigation with Python-themed colors.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
-    stars: 12,
-    link: "#",
-    github: "#",
-    status: "active",
-  },
-  {
-    title: "task-manager-api",
-    description:
-      "RESTful API built with Python Flask for managing tasks and projects. Includes authentication, CRUD operations, and real-time notifications.",
-    tech: ["Python", "Flask", "PostgreSQL", "Redis"],
-    stars: 28,
-    link: "#",
-    github: "#",
-    status: "active",
-  },
-  {
-    title: "weather-cli",
-    description:
-      "A command-line weather application written in Python that fetches real-time weather data and displays it in a beautiful terminal UI.",
-    tech: ["Python", "Rich", "OpenWeather API"],
-    stars: 45,
-    link: null,
-    github: "#",
-    status: "completed",
-  },
-  {
-    title: "chat-app",
-    description:
-      "Real-time chat application with rooms, direct messaging, and file sharing. Built as a full-stack project with WebSocket support.",
-    tech: ["React", "Node.js", "Socket.io", "MongoDB"],
-    stars: 8,
+      "CMS Dashboard for managing a school core needs. such as managing students, teachers, courses, and schedules. \
+      Fully built with Next.js.",
+    tech: ["TypeScript", "Next.js", "Prisma", "PostgreSQL"],
+    stars: 0,
     link: "#",
     github: "#",
     status: "wip",
   },
   {
-    title: "blog-engine",
+    title: "Sedayu Vibes",
     description:
-      "A markdown-based blog engine with syntax highlighting, SEO optimization, and RSS feed support.",
-    tech: ["Next.js", "MDX", "Tailwind CSS"],
-    stars: 19,
+      "Website projects for my Campus Community Service Program. this website provides information about village news, population, and their public services.",
+    tech: ["TypeScript", "Next.js", "Prisma"],
+    stars: 0,
     link: "#",
     github: "#",
     status: "completed",
+  },
+  {
+    title: "NHTools",
+    description:
+      "Web based tools to help players of Ninja Heroes: New Era, a mobile game by Kagehero Studio. \
+      The tools include deploy attribute calculator, ninja database, and other small tools to help players in the game.",
+    tech: ["TypeScript", "Next.js", "Tailwind CSS"],
+    stars: 0,
+    link: "#",
+    github: "#",
+    status: "archived",
+  },
+  {
+    title: "NH Socket Bot",
+    description:
+      "Python CLI tool that connects to Ninja Heroes game server using WebSocket to provide various features \
+      such as auto farming, auto daily, and other automation to help myself keep up with the game without opening it.",
+    tech: ["Python", "WebSocket", "httpx"],
+    stars: 0,
+    link: null,
+    github: "#",
+    status: "completed",
+  },
+  {
+    title: "NH Cord",
+    description:
+      "Discord bot for Ninja Heroes community server, providing various features such as server management, minigames for in-game rewards, \
+      and other fun features to engage the community.",
+    tech: ["Python", "Py-Cord"],
+    stars: 0,
+    link: null,
+    github: "#",
+    status: "archived",
   },
 ]
 
@@ -67,12 +71,14 @@ const statusColors: Record<string, string> = {
   active: "bg-green-500/10 text-green-400 border-green-500/30",
   completed: "bg-primary/10 text-primary border-primary/30",
   wip: "bg-secondary/10 text-secondary border-secondary/30",
+  archived: "bg-muted/10 text-muted-foreground border-muted/30",
 }
 
 const statusLabels: Record<string, string> = {
   active: "Active",
   completed: "Completed",
   wip: "WIP",
+  archived: "Archived",
 }
 
 export function ProjectsSection() {

@@ -107,12 +107,11 @@ export function AboutSection() {
           <p>
             Right now, I&apos;m focused on improving my skills in machine
             learning specially building my own chatbot using open source models
-            and frameworks.
           </p>
           <p>
             A little note here, i'm not into frontend development, so this
-            portfolio is intentionally simple and minimalistic, vibe coded with
-            Claude Opus 4.6.
+            portfolio was vibe coded with Claude Opus 4.6 with a little code I
+            wrote.
           </p>
         </CardContent>
       </Card>

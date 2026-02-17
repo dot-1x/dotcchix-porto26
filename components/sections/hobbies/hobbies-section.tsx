@@ -11,10 +11,7 @@ import {
   Music,
   BookOpen,
   Coffee,
-  Camera,
-  Dumbbell,
   Cpu,
-  Monitor,
   MemoryStick,
   CircuitBoard,
   Zap,
@@ -52,13 +49,6 @@ const hobbies = [
     description:
       "Yes I love drinking coffee. tho not into trying different coffes, just Americano with less-sugar is all I can drink.",
     tags: ["Americano", "Less-sugar", "No-milk"],
-  },
-  {
-    icon: BookOpen,
-    title: "Reading",
-    description:
-      "Love to read about fiqh kitab, currently learning kitab Fathul Qorib. I also sometimes read about news, tech blogs, and documentation.",
-    tags: ["Fiqh", "Islamic"],
   },
 ]
 
