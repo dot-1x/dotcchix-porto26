@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "dotcchix || Zex",
-  description: "Portofolio websites about Zex.",
+  description:
+    'Portofolio websites about Zex. "Assisted" with Claude Opus 4.6 with a little touch from me',
 }
 
 export default function RootLayout({
