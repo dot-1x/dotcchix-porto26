@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "dotcchix | Portfolio",
-  description: "Developer portfolio — built with Next.js & Python vibes",
+  title: "dotcchix || Zex",
+  description: "Portofolio websites about Zex.",
 }
 
 export default function RootLayout({
