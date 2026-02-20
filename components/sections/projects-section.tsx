@@ -65,6 +65,16 @@ const projects = [
     github: "#",
     status: "archived",
   },
+  {
+    title: "Sourcepawn CS:GO Mako Plugin",
+    description:
+      "a very old plugin for CS:GO Zombie Escape mod, providing FFVII Mako Reactor V5 stage selection after Extreme2",
+    tech: ["SourcePawn"],
+    stars: 0,
+    link: null,
+    github: "#",
+    status: "archived",
+  },
 ]
 
 const statusColors: Record<string, string> = {

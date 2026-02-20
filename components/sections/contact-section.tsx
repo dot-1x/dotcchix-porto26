@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import {
   Card,
   CardContent,
@@ -10,14 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import {
-  Mail,
-  Github,
-  Linkedin,
-  Twitter,
-  Send,
-  MessageSquare,
-} from "lucide-react"
+import { Mail, Github, Linkedin, Twitter, MessageSquare } from "lucide-react"
 import { FaDiscord, FaSteam } from "react-icons/fa"
 
 const socialLinks = [
