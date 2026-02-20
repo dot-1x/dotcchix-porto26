@@ -57,7 +57,7 @@ export function AboutSection() {
           <div className="flex flex-col items-center gap-4 sm:flex-row">
             <Avatar className="h-20 w-20 border-2 border-primary">
               <Image
-                src="https://cdn.discordapp.com/avatars/732842920889286687/7a3da245a49f565d5d252935f0eec388.webp"
+                src="/profile.png"
                 alt="dotcchix-avatar"
                 width={128}
                 height={128}

@@ -7,7 +7,6 @@ import {
   CircuitBoard,
   Zap,
   Gpu,
-  FlaskConical,
 } from "lucide-react"
 
 export type Hobby = {

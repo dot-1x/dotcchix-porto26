@@ -18,24 +18,37 @@ import {
   Send,
   MessageSquare,
 } from "lucide-react"
+import { FaDiscord, FaSteam } from "react-icons/fa"
 
 const socialLinks = [
   {
     icon: Github,
     label: "GitHub",
-    handle: "@dotcchix",
+    handle: "@dot-1x",
     url: "https://github.com/dot-1x",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    handle: "in/dotcchix",
+    handle: "in/nizar-dhiaudin",
     url: "https://www.linkedin.com/in/nizar-dhiaudin-b0aa792ab/",
+  },
+  {
+    icon: FaDiscord,
+    label: "Discord",
+    handle: "@dotcchix",
+    url: "https://discord.com/users/732842920889286687", // Replace with actual Discord profile URL
+  },
+  {
+    icon: FaSteam,
+    label: "Steam",
+    handle: "notcchix",
+    url: "https://steamcommunity.com/profiles/76561199078162163", // Replace with actual Discord profile URL
   },
   {
     icon: Twitter,
     label: "Twitter / X",
-    handle: "@dotcchix",
+    handle: "@zexdii",
     url: "https://twitter.com/zexdii",
   },
   {
@@ -47,19 +60,6 @@ const socialLinks = [
 ]
 
 export function ContactSection() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Placeholder for form submission
-    alert(`Thanks ${name}! Message received.`)
-    setName("")
-    setEmail("")
-    setMessage("")
-  }
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -117,59 +117,24 @@ export function ContactSection() {
             ## Send a Message
           </CardTitle>
           <CardDescription className="font-mono text-xs">
-            {">"} Fill in the fields below and I&apos;ll get back to you
+            {">"} Contact me via Discord if you need anything
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label className="font-mono text-xs text-muted-foreground">
-                name:
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="your_name"
-                required
-                className="w-full rounded-md border border-border bg-muted/30 px-3 py-2 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="font-mono text-xs text-muted-foreground">
-                email:
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                required
-                className="w-full rounded-md border border-border bg-muted/30 px-3 py-2 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="font-mono text-xs text-muted-foreground">
-                message:
-              </label>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Hello! I'd like to..."
-                rows={4}
-                required
-                className="w-full resize-none rounded-md border border-border bg-muted/30 px-3 py-2 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-              />
-            </div>
-            <Separator className="bg-border/30" />
+          <Separator className="bg-border/30" />
+          <a
+            href="https://discord.com/users/732842920889286687"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
-              type="submit"
+              type="button"
               className="w-full gap-2 bg-primary font-mono text-primary-foreground hover:bg-primary/90"
             >
-              <Send className="h-4 w-4" />
-              send_message()
+              <FaDiscord className="h-4 w-4" />
+              send_message
             </Button>
-          </form>
+          </a>
         </CardContent>
       </Card>
     </div>
