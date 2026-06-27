@@ -37,7 +37,7 @@ export interface EnkaPlayerInfo {
   isShowAvatarTalent: boolean
   fetterCount: number // Total max friendship level count
   towerStarIndex: number // Spiral Abyss star count
-  stygianIndex: number
+  stygianIndex: number // 5/6 - 5: Fearless, 6: Dire
   stygianSeconds: number
   stygianId: number
 }
