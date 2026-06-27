@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
         "https://static.wikia.nocookie.net/gensin-impact/images/7/7d/Arlecchino_Wish.png/revision/latest/scale-to-width-down/1000?cb=20240424055957",
       ),
       new URL("https://i.pinimg.com/**"),
+      new URL("https://enka.network/**"),
     ],
   },
 }
