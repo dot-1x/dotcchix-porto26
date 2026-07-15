@@ -1,4 +1,4 @@
-import { Drama, Star } from "lucide-react"
+import { Star } from "lucide-react"
 import Image from "next/image"
 import { type AccountTheater } from "@/lib/genshin-api"
 import { ELEMENT_COLORS } from "@/lib/genshin-data"
@@ -9,7 +9,7 @@ import {
   CardContent,
 } from "@/components/ui/card"
 
-export function ImaginariumTheatreSection({
+export function ImaginariumTheaterSection({
   theater,
 }: {
   theater: AccountTheater | null
@@ -20,14 +20,20 @@ export function ImaginariumTheatreSection({
         <Card className="border-border/50 bg-card backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-mono text-base text-secondary">
-              <Drama className="h-4 w-4" />
-              Imaginarium Theatre
+              <Image
+                src="/genshin/Imaginarium_Theater.webp"
+                alt="Imaginarium Theater"
+                width={16}
+                height={16}
+                className="h-4 w-4 object-contain"
+              />
+              Imaginarium Theater
             </CardTitle>
           </CardHeader>
         </Card>
         <Card className="border-border/50 bg-card backdrop-blur-sm">
           <p className="px-6 py-4 text-center text-sm text-muted-foreground">
-            No Imaginarium Theatre records available.
+            No Imaginarium Theater records available.
           </p>
         </Card>
       </section>
@@ -42,8 +48,14 @@ export function ImaginariumTheatreSection({
       <Card className="border-border/50 bg-card backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 font-mono text-base text-secondary">
-            <Drama className="h-4 w-4" />
-            Imaginarium Theatre
+            <Image
+              src="/genshin/Imaginarium_Theater.webp"
+              alt="Imaginarium Theater"
+              width={16}
+              height={16}
+              className="h-4 w-4 object-contain"
+            />
+            Imaginarium Theater
           </CardTitle>
         </CardHeader>
       </Card>
@@ -51,13 +63,13 @@ export function ImaginariumTheatreSection({
       <Card className="border-border/50 bg-card backdrop-blur-sm">
         <CardContent className="px-0">
           <div className="grid grid-cols-1 divide-y divide-border/30 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-            <TheatreStat
+            <TheaterStat
               label="Stars Earned"
               value={`${earnedStars} / ${totalActs}`}
               hint="Medals across acts"
               icon
             />
-            <TheatreStat
+            <TheaterStat
               label="Acts Cleared"
               value={`${totalActs}`}
               hint="Total acts in run"
@@ -130,7 +142,7 @@ export function ImaginariumTheatreSection({
   )
 }
 
-function TheatreStat({
+function TheaterStat({
   label,
   value,
   hint,
