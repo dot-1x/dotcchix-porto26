@@ -1,40 +1,53 @@
-import { playerStats } from "@/lib/genshin-data"
-import { type EnkaPlayerInfo } from "@/lib/enka"
-import { GlassCard } from "./primitives"
+import { Trophy, CalendarDays, Users, Heart } from "lucide-react"
+import { type AccountInfo } from "@/lib/genshin-api"
+import { Card, CardContent } from "@/components/ui/card"
 
-export function StatsRow({ playerInfo }: { playerInfo: EnkaPlayerInfo | null }) {
+export function StatsRow({ info }: { info: AccountInfo | null }) {
   const stats = [
     {
       label: "Achievements",
-      value: playerInfo?.finishAchievementNum ?? "—",
-      icon: "🏆",
+      value: info?.achievement_number ?? "—",
+      icon: Trophy,
     },
-    { label: "Days Active", value: playerStats.daysActive, icon: "📅" },
-    { label: "Characters", value: playerStats.charactersOwned, icon: "👥" },
+    {
+      label: "Days Active",
+      value: info?.active_day_number ?? "—",
+      icon: CalendarDays,
+    },
+    {
+      label: "Characters",
+      value: info?.total_characters ?? "—",
+      icon: Users,
+    },
     {
       label: "Friendships",
-      value: playerInfo?.fetterCount ?? "—",
-      icon: "💛",
+      value: info?.total_friendship ?? "—",
+      icon: Heart,
     },
   ]
 
   return (
-    <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-      {stats.map((s) => (
-        <GlassCard key={s.label} className="px-4 py-3">
-          <div className="flex items-center gap-3">
-            <span className="text-lg">{s.icon}</span>
-            <div className="min-w-0">
-              <div className="truncate text-base font-bold text-[#f5e6b8]">
-                {s.value}
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      {stats.map((s) => {
+        const Icon = s.icon
+        return (
+          <Card key={s.label} className="border-border/50 bg-card py-0 backdrop-blur-sm">
+            <CardContent className="px-4 py-3">
+              <div className="flex items-center gap-3">
+                <Icon className="h-5 w-5 shrink-0 text-primary" />
+                <div className="min-w-0">
+                  <div className="truncate text-base font-bold text-foreground">
+                    {s.value}
+                  </div>
+                  <div className="truncate text-xs text-muted-foreground">
+                    {s.label}
+                  </div>
+                </div>
               </div>
-              <div className="truncate text-[0.7rem] text-[#ece5d8]/45">
-                {s.label}
-              </div>
-            </div>
-          </div>
-        </GlassCard>
-      ))}
+            </CardContent>
+          </Card>
+        )
+      })}
     </div>
   )
 }

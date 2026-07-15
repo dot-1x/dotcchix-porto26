@@ -1,0 +1,97 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+import { Users } from "lucide-react"
+import { type GenshinData } from "@/lib/genshin-api"
+import { cn } from "@/lib/utils"
+import { PlayerCard } from "./player-card"
+import { StatsRow } from "./stats-row"
+import { CharacterShowcase } from "./character-showcase"
+import { SpiralAbyssSection } from "./spiral-abyss-section"
+import { ImaginariumTheatreSection } from "./imaginarium-theatre-section"
+import { StygianOnslaughtSection } from "./stygian-onslaught-section"
+
+type Tab = "home" | "characters" | "spiral" | "stygian"
+
+const TABS: {
+  id: Tab
+  label: string
+  icon: string
+  iconLucide?: boolean
+}[] = [
+  { id: "home", label: "Detail", icon: "/genshin/sumeru.png" },
+  { id: "characters", label: "Characters", icon: "users", iconLucide: true },
+  { id: "spiral", label: "Spiral", icon: "/genshin/spiral.webp" },
+  { id: "stygian", label: "Stygian", icon: "/genshin/stygian.png" },
+]
+
+export function GenshinNav({ data }: { data: GenshinData }) {
+  const [activeTab, setActiveTab] = useState<Tab>("home")
+
+  return (
+    <>
+      <nav className="mb-6 flex gap-1 border-b border-border/30">
+        {TABS.map((tab) => {
+          const isActive = activeTab === tab.id
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={cn(
+                "flex items-center gap-2 px-4 py-2 font-mono text-sm transition-colors",
+                isActive
+                  ? "border-b-2 border-primary text-primary"
+                  : "border-b-2 border-transparent text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {tab.iconLucide ? (
+                <Users className="h-5 w-5" />
+              ) : (
+                <Image
+                  src={tab.icon}
+                  alt={tab.label}
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 object-contain"
+                />
+              )}
+              {tab.label}
+            </button>
+          )
+        })}
+      </nav>
+
+      {activeTab === "home" && (
+        <div className="space-y-6">
+          <PlayerCard info={data.info} />
+          <StatsRow info={data.info} />
+          <div className="pt-4">
+            <ImaginariumTheatreSection theater={data.theater} />
+          </div>
+        </div>
+      )}
+
+      {activeTab === "characters" && (
+        <div className="space-y-6">
+          <CharacterShowcase characters={data.characters} />
+        </div>
+      )}
+
+      {activeTab === "spiral" && (
+        <div className="space-y-6">
+          <SpiralAbyssSection
+            abyss={data.abyss}
+            characters={data.characters}
+          />
+        </div>
+      )}
+
+      {activeTab === "stygian" && (
+        <div className="space-y-6">
+          <StygianOnslaughtSection stygian={data.stygian} />
+        </div>
+      )}
+    </>
+  )
+}

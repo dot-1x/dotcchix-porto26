@@ -1,42 +1,49 @@
-import { PLAYER_UID, PLAYER_SERVER } from "@/lib/genshin-data"
-import { type EnkaPlayerInfo } from "@/lib/enka"
-import { GlassCard, Pill } from "./primitives"
+import { Sparkles } from "lucide-react"
+import { type AccountInfo } from "@/lib/genshin-api"
+import {
+  Card,
+  CardContent,
+} from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from "@/components/ui/avatar"
 
-export function PlayerCard({
-  playerInfo,
-}: {
-  playerInfo: EnkaPlayerInfo | null
-}) {
-  const nickname = playerInfo?.nickname ?? "dotcchix"
-  const signature = playerInfo?.signature ?? "Wandering through Teyvat."
-  const ar = playerInfo?.level ?? 60
-  const wl = playerInfo?.worldLevel ?? 8
+export function PlayerCard({ info }: { info: AccountInfo | null }) {
+  const nickname = info?.nickname ?? "dotcchix"
+  const ar = info?.level ?? 60
+  const uid = info?.uid ?? "—"
+  const headIcon = info?.game_head_icon
 
   return (
-    <GlassCard className="overflow-hidden">
-      <div className="flex flex-col items-center gap-5 p-6 sm:flex-row sm:gap-6 sm:p-7">
-        {/* Avatar */}
-        <div className="relative shrink-0">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d4a853] to-[#4cc2f1] opacity-60 blur-md" />
-          <div className="relative grid h-20 w-20 place-items-center rounded-full border border-white/20 bg-[#0b0d16] text-3xl">
-            ✦
-          </div>
-        </div>
+    <Card className="border-border/50 bg-card backdrop-blur-sm">
+      <CardContent className="pt-6">
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+          <Avatar size="lg" className="h-20 w-20 border-2 border-primary">
+            {headIcon ? (
+              <AvatarImage src={headIcon} alt={nickname} />
+            ) : (
+              <AvatarFallback className="bg-muted">
+                <Sparkles className="h-8 w-8 text-primary" />
+              </AvatarFallback>
+            )}
+          </Avatar>
 
-        {/* Identity */}
-        <div className="flex-1 text-center sm:text-left">
-          <h2 className="text-2xl font-bold text-white">{nickname}</h2>
-          <p className="mt-1 text-sm italic text-[#ece5d8]/50">
-            &quot;{signature}&quot;
-          </p>
-          <div className="mt-3 flex flex-wrap justify-center gap-2 sm:justify-start">
-            <Pill label="AR" value={ar} accent />
-            <Pill label="WL" value={wl} accent />
-            <Pill label="UID" value={PLAYER_UID} />
-            <Pill label="Server" value={PLAYER_SERVER} />
+          <div className="flex-1 text-center sm:text-left">
+            <h2 className="text-2xl font-bold text-foreground">{nickname}</h2>
+            <div className="mt-3 flex flex-wrap justify-center gap-2 sm:justify-start">
+              <Badge variant="secondary" className="font-mono text-xs">
+                AR {ar}
+              </Badge>
+              <Badge variant="outline" className="font-mono text-xs">
+                UID {uid}
+              </Badge>
+            </div>
           </div>
         </div>
-      </div>
-    </GlassCard>
+      </CardContent>
+    </Card>
   )
 }
