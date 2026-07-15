@@ -21,7 +21,7 @@ export default async function GenshinImpactPage() {
         {/* Footer */}
         <div className="mt-12 border-t border-border/30 pt-4">
           <p className="text-center font-mono text-[10px] text-muted-foreground">
-            Data sourced from genshin.dotcchix.dev &mdash; Not affiliated with
+            Data sourced from hoyolab API &mdash; Not affiliated with
             HoYoverse
           </p>
         </div>
