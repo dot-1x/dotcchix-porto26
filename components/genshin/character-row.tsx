@@ -52,10 +52,7 @@ export function CharacterRow({ character }: { character: DisplayCharacter }) {
     (s) => normName(s.name).endsWith("DMG Bonus") && s.value !== "0.0%",
   )
 
-  // artifact sets distributed into 2 rows
   const sets = character.artifactSets ?? []
-  const half = Math.ceil(sets.length / 2)
-  const setRows = sets.length === 0 ? [] : [sets.slice(0, half), sets.slice(half)]
 
   return (
     <div className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center">
@@ -117,15 +114,15 @@ export function CharacterRow({ character }: { character: DisplayCharacter }) {
           )}
         </DetailChip>
 
-        {setRows.length > 0 && (
+        {sets.length > 0 && (
           <DetailChip label="Artifacts" className="min-w-[12rem] flex-1">
             <div className="flex flex-col gap-0.5">
-              {setRows.map((row, i) => (
+              {sets.map((set, i) => (
                 <span
                   key={i}
                   className="truncate text-[0.7rem] leading-tight text-foreground"
                 >
-                  {row.join(", ")}
+                  {set}
                 </span>
               ))}
             </div>

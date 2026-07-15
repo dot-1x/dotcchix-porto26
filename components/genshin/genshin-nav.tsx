@@ -29,7 +29,7 @@ export function GenshinNav({ data }: { data: GenshinData }) {
 
   return (
     <>
-      <nav className="mb-6 flex gap-1 border-b border-border/30">
+      <nav className="mb-6 flex gap-1 overflow-x-auto border-b border-border/30 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {TABS.map((tab) => {
           const isActive = activeTab === tab.id
           return (
@@ -37,7 +37,7 @@ export function GenshinNav({ data }: { data: GenshinData }) {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 font-mono text-sm transition-colors",
+                "flex shrink-0 items-center gap-2 px-4 py-2 font-mono text-sm whitespace-nowrap transition-colors",
                 isActive
                   ? "border-b-2 border-primary text-primary"
                   : "border-b-2 border-transparent text-muted-foreground hover:text-foreground",

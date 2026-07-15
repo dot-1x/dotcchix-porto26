@@ -21,12 +21,12 @@ export function PlayerCard({ info }: { info: AccountInfo | null }) {
     <Card className="border-border/50 bg-card backdrop-blur-sm">
       <CardContent className="pt-6">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-          <Avatar size="lg" className="h-20 w-20 border-2 border-primary">
+          <Avatar className="h-32 w-32 border-2 border-primary">
             {headIcon ? (
               <AvatarImage src={headIcon} alt={nickname} />
             ) : (
               <AvatarFallback className="bg-muted">
-                <Sparkles className="h-8 w-8 text-primary" />
+                <Sparkles className="h-12 w-12 text-primary" />
               </AvatarFallback>
             )}
           </Avatar>
