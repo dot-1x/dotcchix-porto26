@@ -29,6 +29,9 @@ export function ImaginariumTheaterSection({
               />
               Imaginarium Theater
             </CardTitle>
+            <p className="font-mono text-[0.65rem] italic text-muted-foreground/60">
+              Suli Could Never
+            </p>
           </CardHeader>
         </Card>
         <Card className="border-border/50 bg-card backdrop-blur-sm">
@@ -57,6 +60,9 @@ export function ImaginariumTheaterSection({
             />
             Imaginarium Theater
           </CardTitle>
+          <p className="font-mono text-[0.65rem] italic text-muted-foreground/60">
+            Suli Could Never
+          </p>
         </CardHeader>
       </Card>
 
