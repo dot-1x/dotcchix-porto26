@@ -1,7 +1,7 @@
 import type { Element } from "@/lib/genshin-data"
 
 const API_BASE = "https://genshin.dotcchix.dev/api"
-const REVALIDATE = 3600
+const REVALIDATE = 1200
 
 export interface AccountInfo {
   uid: number
