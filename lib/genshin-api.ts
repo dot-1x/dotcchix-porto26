@@ -1,6 +1,6 @@
 import type { Element } from "@/lib/genshin-data"
 
-const API_BASE = "https://genshin.dotcchix.dev/api"
+const API_BASE = "https://hoyo.dotcchix.dev/api/gi"
 const REVALIDATE = 1200
 
 export interface AccountInfo {
@@ -143,19 +143,19 @@ async function fetchJson<T>(path: string): Promise<T | null> {
 }
 
 export function getAccountInfo() {
-  return fetchJson<AccountInfo>("/account/info")
+  return fetchJson<AccountInfo>("/info")
 }
 export function getAccountCharacters() {
-  return fetchJson<AccountCharacter[]>("/account/characters")
+  return fetchJson<AccountCharacter[]>("/characters")
 }
 export function getAccountAbyss() {
-  return fetchJson<AccountAbyss>("/account/abyss")
+  return fetchJson<AccountAbyss>("/abyss")
 }
 export function getAccountTheater() {
-  return fetchJson<AccountTheater[]>("/account/theater")
+  return fetchJson<AccountTheater[]>("/theater")
 }
 export function getAccountStygian() {
-  return fetchJson<AccountStygian>("/stygian")
+  return fetchJson<AccountStygian>("/stygian/detail")
 }
 
 export async function getGenshinData(): Promise<GenshinData> {

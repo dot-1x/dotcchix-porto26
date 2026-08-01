@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dotcchix.dev"),
   title: "dotcchix || Zex",
   description:
     'Zexs personal websites, where you can find about me here. "Assisted" with Claude Opus 4.6 with a little touch from me',
