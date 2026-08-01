@@ -11,7 +11,7 @@ import { SpiralAbyssSection } from "./spiral-abyss-section"
 import { ImaginariumTheaterSection } from "./imaginarium-theater-section"
 import { StygianOnslaughtSection } from "./stygian-onslaught-section"
 
-type Tab = "home" | "characters" | "spiral" | "stygian"
+type Tab = "home" | "characters" | "spiral" | "stygian" | "theater"
 
 const TABS: {
   id: Tab
@@ -22,6 +22,7 @@ const TABS: {
   { id: "characters", label: "Characters", icon: "/genshin/Icon_Character.webp" },
   { id: "spiral", label: "Spiral", icon: "/genshin/spiral.webp" },
   { id: "stygian", label: "Stygian", icon: "/genshin/stygian.png" },
+  { id: "theater", label: "Theater", icon: "/genshin/Imaginarium_Theater.webp" },
 ]
 
 export function GenshinNav({ data }: { data: GenshinData }) {
@@ -61,7 +62,7 @@ export function GenshinNav({ data }: { data: GenshinData }) {
           <PlayerCard info={data.info} />
           <StatsRow info={data.info} />
           <div className="pt-4">
-            <ImaginariumTheaterSection theater={data.theater} />
+            <StygianOnslaughtSection stygian={data.stygian} />
           </div>
         </div>
       )}
@@ -84,6 +85,12 @@ export function GenshinNav({ data }: { data: GenshinData }) {
       {activeTab === "stygian" && (
         <div className="space-y-6">
           <StygianOnslaughtSection stygian={data.stygian} />
+        </div>
+      )}
+
+      {activeTab === "theater" && (
+        <div className="space-y-6">
+          <ImaginariumTheaterSection theater={data.theater} />
         </div>
       )}
     </>
