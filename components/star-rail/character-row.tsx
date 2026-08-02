@@ -81,7 +81,9 @@ export function CharacterRow({ character }: { character: DisplayCharacter }) {
                 {character.lightCone.name}
               </span>
               <Badge variant="secondary" className="font-mono text-[0.6rem]">
-                Lv.{character.lightCone.level}
+                {character.lightCone.superimpose != null
+                  ? `S${character.lightCone.superimpose}`
+                  : `Lv.${character.lightCone.level}`}
               </Badge>
             </span>
           ) : (

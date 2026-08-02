@@ -32,9 +32,19 @@ export interface SrCharacter {
   equip: SrLightCone | null
 }
 
-export interface SrNodeCharacter {
+export interface SrNodeLightCone {
+  name: string
   icon: string
-  level: number
+  /** Superimposition rank (S1–S5). */
+  superimpose: number
+}
+
+export interface SrNodeCharacter {
+  name: string
+  icon: string
+  /** Active eidolon count (E0–E6). */
+  eidolon: number
+  light_cone: SrNodeLightCone | null
 }
 
 export interface SrNode {
@@ -62,6 +72,14 @@ export interface StarRailData {
   apocalypticShadow: SrEndgame | null
 }
 
+/** A light cone in a display-ready shape (roster carries `level`, endgame nodes carry `superimpose`). */
+export interface DisplayLightCone {
+  name: string
+  icon: string
+  level?: number
+  superimpose?: number
+}
+
 /** A character resolved to a display-ready shape (used by team/row components). */
 export interface DisplayCharacter {
   icon: string
@@ -69,7 +87,7 @@ export interface DisplayCharacter {
   element: Element | null
   level: number
   eidolon: number | null
-  lightCone: SrLightCone | null
+  lightCone: DisplayLightCone | null
 }
 
 export interface DisplayTeam {
@@ -125,16 +143,17 @@ export async function getStarRailData(): Promise<StarRailData> {
 }
 
 /**
- * Build an index of owned characters keyed by icon URL so lean roster
- * references (endgame nodes only carry `{ icon, level }`) can be enriched
- * with name / element / eidolon / light cone.
+ * Build an index of owned characters keyed by name. Endgame node characters
+ * now carry their own `name`, `icon`, `eidolon`, and `light_cone` directly,
+ * so this index is only used to enrich a node character with `element` and
+ * `level` (roster-only fields not present on endgame nodes).
  */
 export function buildCharacterIndex(
   characters: SrCharacter[],
 ): Map<string, SrCharacter> {
   const map = new Map<string, SrCharacter>()
   for (const c of characters) {
-    map.set(c.icon, c)
+    map.set(c.name, c)
   }
   return map
 }
@@ -142,31 +161,28 @@ export function buildCharacterIndex(
 export type CharacterIndex = Map<string, SrCharacter>
 
 /**
- * Resolve a lean `{ icon, level }` reference into a full display character,
- * falling back to the reference itself when the character isn't owned.
+ * Resolve an endgame node character into a full display character. Name,
+ * icon, eidolon, and light cone come directly from the node data; `element`
+ * and `level` are enriched from the roster index by name when available.
  */
 export function resolveNodeChar(
   ref: SrNodeCharacter,
   index: CharacterIndex,
 ): DisplayCharacter {
-  const owned = index.get(ref.icon)
-  if (owned) {
-    return {
-      icon: owned.icon,
-      name: owned.name,
-      element: normalizeElement(owned.element),
-      level: owned.level,
-      eidolon: owned.rank,
-      lightCone: owned.equip,
-    }
-  }
+  const owned = index.get(ref.name)
   return {
     icon: ref.icon,
-    name: "Unknown",
-    element: null,
-    level: ref.level,
-    eidolon: null,
-    lightCone: null,
+    name: ref.name,
+    element: owned ? normalizeElement(owned.element) : null,
+    level: owned?.level ?? 0,
+    eidolon: ref.eidolon,
+    lightCone: ref.light_cone
+      ? {
+          name: ref.light_cone.name,
+          icon: ref.light_cone.icon,
+          superimpose: ref.light_cone.superimpose,
+        }
+      : null,
   }
 }
 
