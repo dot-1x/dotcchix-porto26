@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ElementIcon } from "./element-icon"
+import { CharacterDetailDialog } from "./character-detail-dialog"
 import { cn } from "@/lib/utils"
 
 export function CharacterShowcase({
@@ -27,6 +28,7 @@ export function CharacterShowcase({
   characters: AccountCharacter[]
 }) {
   const [active, setActive] = useState<Element | "All">("All")
+  const [selected, setSelected] = useState<AccountCharacter | null>(null)
 
   const { counts, elements } = useMemo(() => {
     const map = new Map<Element, number>()
@@ -95,9 +97,10 @@ export function CharacterShowcase({
                 ? ELEMENT_COLORS[char.element]
                 : undefined
               return (
-                <Tooltip key={`${char.name}-${i}`}>
+                <Tooltip key={`${char.name}-${char.id ?? i}`}>
                   <TooltipTrigger asChild>
                     <Card
+                      onClick={() => setSelected(char)}
                       className="group cursor-pointer overflow-hidden border-border/50 bg-card py-0 backdrop-blur-sm transition-colors hover:border-primary/50"
                     >
                       <CardContent className="px-0">
@@ -148,6 +151,14 @@ export function CharacterShowcase({
             })}
           </div>
         </TooltipProvider>
+
+          <CharacterDetailDialog
+            character={selected}
+            open={!!selected}
+            onOpenChange={(open) => {
+              if (!open) setSelected(null)
+            }}
+          />
           </>
         )}
     </section>

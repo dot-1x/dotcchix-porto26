@@ -18,15 +18,41 @@ export interface AccountCharacterWeapon {
   name: string
   level: number
   icon: string
+  refine?: number
 }
 
 export interface AccountCharacter {
+  id: number
   icon: string
   name: string
   element: Element
   level: number
+  rarity?: number
   actived_constellation_num: number
   weapon: AccountCharacterWeapon
+}
+
+export interface GenshinCharacterDetail {
+  id: number
+  icon: string
+  name: string
+  element: Element
+  level: number
+  rarity: number
+  actived_constellation_num: number
+  weapon: AccountCharacterWeapon & { refine: number }
+  final_stats: StygianFinalStat[]
+  artifact_sets: string[]
+  constellations: GenshinConstellation[]
+}
+
+export interface GenshinConstellation {
+  id: number
+  name: string
+  icon: string
+  effect: string
+  is_actived: boolean
+  pos: number
 }
 
 export interface AbyssBattleCharacter {
@@ -156,6 +182,10 @@ export function getAccountTheater() {
 }
 export function getAccountStygian() {
   return fetchJson<AccountStygian>("/stygian/detail")
+}
+
+export function getGenshinCharacterDetail(id: number) {
+  return fetchJson<GenshinCharacterDetail>(`/characters/${id}`)
 }
 
 export async function getGenshinData(): Promise<GenshinData> {
