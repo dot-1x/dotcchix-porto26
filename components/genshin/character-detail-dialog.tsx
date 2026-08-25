@@ -292,7 +292,7 @@ export function CharacterDetailDialog({
                       <Badge
                         key={i}
                         variant="secondary"
-                        className="rounded-md bg-muted px-2.5 py-1 text-xs font-normal"
+                        className="rounded-md border border-secondary/20 bg-secondary px-2.5 py-1 text-xs font-normal text-secondary-foreground"
                       >
                         {set}
                       </Badge>
